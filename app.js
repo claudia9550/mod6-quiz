@@ -1,7 +1,3 @@
-/**
- * Module dependencies.
- */
-
 // importar paquetes middleware
 var express = require('express');
 var path    = require('path');
@@ -18,6 +14,8 @@ var app = express();
 app.set('views',path.join(__dirname,'/views'));
 app.set('view engine','ejs');
 
+app.use(partials());
+
 // Favicon - Icono Amigable
 app.use(favicon(__dirname + "/public/favicon.ico"));
 app.use(logger('dev'));
@@ -30,8 +28,6 @@ app.use(express.static(path.join(__dirname,'public')));
 app.use('/',routes);
 
 console.log('valida middleware y rutas - incluye favicon.ico');
-
-//app.use(partials());
 
 //	error ruta de gestores
 app.use(function(req, res, next)

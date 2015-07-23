@@ -12,7 +12,7 @@ router.get('/', function(req,res)
 // toma ruta espedcializada
 router.get('/examen/question', examencontroller.question);
 router.get('/examen/answer', examencontroller.answer);
-//router.get('/examen/creditos', examencontroller.creditos);
+router.get('/examen/creditos', examencontroller.creditos);
 
 module.exports = router;
 console.log('carga archivo de rutas -quiz controller - routes-index');
