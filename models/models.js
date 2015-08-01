@@ -24,34 +24,34 @@ var sequelize = new Sequelize(DB_name, user, pwd,
 	  port:     port,
 	  host:     host,
 	  storage:  storage,
-	  oitNull:  true
+	  omitNull: true
          });
 
-//Importar definicion tabla de Quiz
+// Usar BBDD SQLITE:
+//var sequelize = new Sequelize(null, null, null, 
+//		{dialect: "sqlite", storage: "quiz.sqlite"} );
+
+//Importa definicion tabla de Quiz
+
 var quiz_path = path.join(__dirname,'quiz');
 var Quiz      = sequelize.import(quiz_path);
 
+//var Quiz = sequelize.import(path.join(__dirname,'quiz'));
+
 exports.Quiz = Quiz;
 
-// Usar BBDD SQLITE:
-var sequelize = new Sequelize(null, null, null, 
-		{dialect: "sqlite", storage: "quiz.sqlite"} );
-
-// Importar la def. de la tabla Qui en quiz.js
-var Quiz = sequelize.import(path.join(__dirname,'quiz'));
-
-exports.Quiz = Quiz;   // exporta la definicion
-
 //  sequelyze.sync() crea e inicializa tabla de preguntas en BD
-sequelize.sync().success(function()   {
+sequelize.sync().then(function()   {
    //		success.. ejecuta el manejador en la tabla
-	Quiz.count().success(function(count)	{
+	Quiz.count().then(function(count)	{
 	if (count === 0)  {
-	   Quiz.create( {pregunta: 'Capital de Italia',
-		         respuesta: 'Roma'   }) 
-       .success(function(){console.log('Base de datos ha sido inicializada')});
+	   Quiz.bulkCreate( 
+		[{pregunta: 'Capital de Italia', respuesta: 'Roma'   }, 
+	         {pregunta: 'Capital de Grecia', respuesta: 'Atenas'   }])
+       .then(function(){console.log('Base de datos ha sido inicializada')});
 	};
      });
  });
+console.log('models.js cargado')
 
 

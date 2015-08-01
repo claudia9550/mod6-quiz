@@ -3,12 +3,13 @@
 var debug = require('debug')('quiz');
 var app   = require('../app');
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 5000);
+console.log ("entra www 1');
 
 var server = app.listen(app.get('port'),function() {
 debug ('Express Server listening on port ' + server.address().port);
 console.log('Ejemplo app listening at http://%s:%s',
 	server.address().address,server.address().port);
 });
-
+console.log ("entra www 2');
 

@@ -19,13 +19,15 @@ exports.index = function(req, res)
 // get question - envia la pregunta   -/examen/:id
 exports.show = function(req, res) 
 {	res.render('quizes/show', {quiz: req.quiz});
-	console.log('opcion get/show');  
+	console.log('opcion get/show');  };
+
 };
 // get answer -da la respuesta
 exports.answer=function(req, res) 
 {   var resultado = 'Incorrecto';
-    if (req.query.respuesta === req.quiz.respuesta)  
-	{ resultado = ' Correcto' }
+    if (req.query.respuesta === req.quiz.respuesta)  {
+	resultado = ' Correcto' }
+     }
     res.render('quizes/answer', {quiz: req.quiz, respuesta: resultado }); 
     console.log('opcion get/answer');  
 };

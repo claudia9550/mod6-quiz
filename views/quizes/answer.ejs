@@ -8,8 +8,9 @@
 	
    <body> 
   	<h2>RESPUESTA </h2>
-
-  	 <%= respuesta %> <p>
-  	<a href="/examen/question"> Intentalo de Nuevo </a>
+	<p>
+  	    <%= respuesta %>
+  	    <a href="/quizes/<%= quiz.id %>"> Volver </a>
+	</p>
   </body>
 </html>
