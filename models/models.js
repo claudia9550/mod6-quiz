@@ -12,7 +12,7 @@ var protocol 	= (url[1]||null);
 var dialect	= (url[1]||null);
 var port	= (url[5]||null);
 var host 	= (url[4]||null);
-var storage	= process.env.DATABASE_STORAGE
+var storage	= process.env.DATABASE_STORAGE;
 
 // Cargar modelo ORM
 var Sequelize = require ('sequelize');
@@ -28,8 +28,8 @@ var sequelize = new Sequelize(DB_name, user, pwd,
          });
 
 // Usar BBDD SQLITE:
-//var sequelize = new Sequelize(null, null, null, 
-//		{dialect: "sqlite", storage: "quiz.sqlite"} );
+var sequelize = new Sequelize(null, null, null, 
+		{dialect: "sqlite", storage: "quiz.sqlite"} );
 
 //Importa definicion tabla de Quiz
 
@@ -42,7 +42,6 @@ exports.Quiz = Quiz;
 
 //  sequelyze.sync() crea e inicializa tabla de preguntas en BD
 sequelize.sync().then(function()   {
-   //		success.. ejecuta el manejador en la tabla
 	Quiz.count().then(function(count)	{
 	if (count === 0)  {
 	   Quiz.bulkCreate( 

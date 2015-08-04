@@ -3,11 +3,11 @@
   <head> 
  	<meta charset="utf-8"><title>Quiz</title>
 	<link rel="stylesheet" href="stylesheets/style.css"/>
-	<style> img { width:50%; } </style>
+	<style> img { width:70%; } </style>
   </head>
    <body> 
       <h2>AUTOR</h2>
-       <%- title %> <p>
+       <%- creditos %> <p>
       <img src="/images/claudia.png">
   </body>
 </html>

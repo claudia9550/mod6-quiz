@@ -17,10 +17,9 @@ router.get('/quizes',			   examencontroller.index);
 router.get('/quizes/:quizId(\\d+)',        examencontroller.show);
 router.get('/quizes/:quizId(\\d+)/answer', examencontroller.answer);
 router.get('/quizes/new',                  examencontroller.new);
-router.post('/quizes/create',              examencontroller.create);
+router.post('/quizes/create',               examencontroller.create);
 router.get('/quizes/:quizId(\\d+)/edit',   examencontroller.edit);
-router.put('/quizes/:quizId(\\d+)',        examencontroller.update);
-router.delete('/quizes/:quizId(\\d+)',     examencontroller.destroy);
+//router.put('/quizes/:quizId(\\d+)',        examencontroller.update);
 router.get('/quizes/creditos', 	           examencontroller.creditos);
 
 module.exports = router;
