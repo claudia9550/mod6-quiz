@@ -22,6 +22,7 @@ router.get('/quizes/:quizId(\\d+)/edit',   examencontroller.edit);
 router.put('/quizes/:quizId(\\d+)',        examencontroller.update);
 router.delete('/quizes/:quizId(\\d+)',     examencontroller.destroy);
 router.get('/quizes/creditos', 	           examencontroller.creditos);
+router.get('/quizes/buscar_txt', 	   examencontroller.buscar_txt);
 
 module.exports = router;
 console.log('carga archivo de rutas - /quizes - router.get');

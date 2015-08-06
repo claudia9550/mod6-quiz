@@ -85,10 +85,29 @@ exports.destroy = function(req, res)
 };
 // datos del autor
 exports.creditos = function(req, res)  
-{	 
-        res.render('quizes/creditos', 
+{	res.render('quizes/creditos', 
         {title:' Creditos: CLAUDIA A RODRIGUEZ', 
         errors: [] }); 
+};
+
+exports.buscar_txt = function(req, res)
+{    var texto = req.query.busqueda;
+     console.log('opcion ', req.query.busqueda);
+     if (texto)
+     { var texto = "%" + texto.replace("","%") + "%";
+       console.log('opcion texto', texto);
+       models.Quiz.findAll({where:["pregunta like ?",texto]})
+       .then(function(quizes)    
+       { res.render('quizes/buscar_txt',{quizes:quizes,errors:[] } );
+       })
+       .catch(function(error) {next(error);})
+     }
+     else 
+     {  console.log('No hay textos similares');
+        models.Quiz.findAll().then (function(quizes)  {
+        res.render('quizes/buscar_txt',
+        {quizes:quizes, errors: []} )  })
+     }
 };
 
 console.log('carga quiz-_controller');

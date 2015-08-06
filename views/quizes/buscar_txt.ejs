@@ -1,0 +1,17 @@
+<header class = "main" id ="h1"
+        <h2><br>  Resultado Busqueda de texto</br></h2> 
+</header>   
+
+<table> 
+  <% var i; for (i=0; i< quizes.length; i++)  { %>
+  <tr>
+    <td><a href="quizes/<%= quizes[i].id %>"><%=quizes[i].pregunta %></a>
+    </td>
+    <td><a href="quizes/<%= quizes[i].id %>"><%=quizes[i].respuesta %></a>
+    </td>
+   </tr>
+  <%  }  %>
+</table>
+
+
+<br><a href="/quizes"><button type="button"> Regresar</button></a></br>
