@@ -21,7 +21,7 @@ exports.index = function(req, res)
 // get question - envia la pregunta   -/examen/:id
 exports.show = function(req, res) 
 {	res.render('quizes/show', {quiz: req.quiz, errors: [] });
-	console.log('opcion get/show - examen_controller');  
+	console.log('opcion get/show - examen_controller',req.quiz);  
 };
 // 
 exports.answer = function(req, res) 
@@ -30,7 +30,7 @@ exports.answer = function(req, res)
 	{ resultado = 'Correcto' }
     res.render('quizes/answer', 
 	       {quiz: req.quiz, respuesta: resultado, errors: [] }); 
-    console.log('opcion get/answer');  
+    console.log('opcion get/answer',req.quiz );  
 };
 //	crea nuevo objeto
 exports.new = function(req, res) 

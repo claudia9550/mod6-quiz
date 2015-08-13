@@ -1,0 +1,26 @@
+var models = require('../models/models.js');
+
+//	crea nuevo comentario
+exports.new = function(req, res) 
+{	res.render('comentario/new.ejs',{quizid: req.params.quizid, errors: []});
+	console.log('opcion comentario/new ');
+};
+// crea en BD comentario identificando la pregunta con quizId
+exports.create = function(req, res) 
+{	var comment = models.Comentario.build( 
+        {texto: req.body.comment.texto, QuizId: req.params.quizid});
+        console.log('opcion exports.create comentario');
+        comment.validate().then (function(err) 
+        { if (err)
+	   {res.render('comentario/new.ejs',
+           {comment: comment, quizid: req.params.quizid, errors: err.errors});
+	    console.log('opcion error comentario');}
+          else
+            { comment.save().then(function() 
+             {res.redirect('/quizes/'+req.params.quizid)}) 
+            }
+         }// redireccion HTTp a lista de preguntas
+        ).catch(function(error){next(error)});
+};
+
+

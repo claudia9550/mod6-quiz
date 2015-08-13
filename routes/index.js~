@@ -28,7 +28,7 @@ router.get('/quizes/:quizId(\\d+)/edit',   sessioncontroller.loginRequired,  exa
 router.put('/quizes/:quizId(\\d+)',        sessioncontroller.loginRequired,  examencontroller.update);
 router.delete('/quizes/:quizId(\\d+)',     sessioncontroller.loginRequired, examencontroller.destroy);
 router.get('/quizes/creditos', 	           examencontroller.creditos);
-router.get('/quizes/buscar_txt', 	   sessioncontroller.loginRequired, examencontroller.buscar_txt);
+router.get('/quizes/buscar_txt', 	   examencontroller.buscar_txt);
 
 // toma ruta especializada for Comentario
 router.get('/quizes/:quizId(\\d+)/comments/new', commentcontroller.new);
