@@ -49,11 +49,11 @@ exports.Comment = Comment;
 
 //  sequelyze.sync() crea e inicializa tabla de preguntas en BD
 sequelize.sync().then(function()   {
-	Quiz.count().then(function(count)	{
-	if (count === 0)  {
-	   Quiz.bulkCreate( 
-		[{pregunta: 'Capital de Italia', respuesta: 'Roma'   }, 
-	         {pregunta: 'Capital de Grecia', respuesta: 'Atenas'   }])
+    Quiz.count().then(function(count)	{
+    if (count === 0)  {
+       Quiz.bulkCreate( 
+	[{indice:'otro', pregunta:'Capital de Italia', respuesta: 'Roma'   }, 
+	 {indice:'otro', pregunta:'Capital de Grecia', respuesta: 'Atenas' }])
        .then(function(){console.log('Base de datos ha sido inicializada')});
 	};
      });

@@ -5,4 +5,4 @@ Anadir comentario: <p>
       <button type="submit">Enviar></button>
   </form>
   <a href="/quizes"><button type="button">Regresar</button></a>
-
+  <a href="/quizes"><button type="button">Cancelar</button></a>

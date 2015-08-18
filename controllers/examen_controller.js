@@ -21,13 +21,13 @@ exports.index = function(req, res)
 // get question - envia la pregunta   -/examen/:id
 exports.show = function(req, res) 
 {	res.render('quizes/show', {quiz: req.quiz, errors: [] });
-	console.log('opcion get/show - examen_controller');  
+	console.log('opcion get/show - examen_controller',req.quiz );  
 };
 // 
 exports.answer = function(req, res) 
-{   var resultado = 'Incorrecto';
+{   var resultado = 'Incorrecto, Intenta de nuevo!';
     if (req.query.respuesta === req.quiz.respuesta)  
-	{ resultado = 'Correcto' }
+	{ resultado = 'Correcto, Buen trabajo!' }
     res.render('quizes/answer', 
 	       {quiz: req.quiz, respuesta: resultado, errors: [] }); 
     console.log('opcion get/answer');  
@@ -35,9 +35,9 @@ exports.answer = function(req, res)
 //	crea nuevo objeto
 exports.new = function(req, res) 
 {	var quiz = models.Quiz.build(
-	{pregunta:"pregunta", respuesta:"respuesta"});
+	{indice:"indice", pregunta:"pregunta", respuesta:"respuesta"});
 	res.render('quizes/new',{quiz: quiz, errors: [] });
-	console.log('opcion exports.new ');
+	console.log('opcion exports.new -quiz ',quiz);
 };
 // crea en BD respuesta y pregunta
 exports.create = function(req, res) 
@@ -50,7 +50,7 @@ exports.create = function(req, res)
 	   { res.render('quizes/new',{quiz: quiz, errors: err.errors});
 	     console.log('opcion exports.create con error');}
            else
-           { quiz.save({fields: ["pregunta", "respuesta"]})
+           { quiz.save({fields: ["indice","pregunta", "respuesta"]})
 	     .then (function() {res.redirect('/quizes')}) }
         });
         console.log('opcion exports.create salida');
@@ -63,7 +63,8 @@ exports.edit = function(req, res)
 };
 // actualiza en BD respuesta y pregunta
 exports.update = function(req, res) 
-{	req.quiz.pregunta  = req.body.quiz.pregunta;
+{	req.quiz.indice    = req.body.quiz.indice;
+	req.quiz.pregunta  = req.body.quiz.pregunta;
         req.quiz.respuesta = req.body.quiz.respuesta;
 	console.log('opcion exports.update ', req.body.quiz.pregunta);
 
@@ -73,7 +74,7 @@ exports.update = function(req, res)
 	   { res.render('quizes/edit',{quiz: req.quiz, errors: err.errors});
 	     console.log('opcion exports.create con error');}
            else
-           {req.quiz.save({fields: ["pregunta", "respuesta"]})
+           {req.quiz.save({fields: ["indice","pregunta", "respuesta"]})
 	     .then (function() {res.redirect('/quizes');}); }
         });
         console.log('opcion exports.update salida');

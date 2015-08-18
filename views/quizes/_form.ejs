@@ -1,6 +1,19 @@
-<label for ="preg" class="rem"> Pregunta </label>
+<label for ="indi" class="rem"> Indice Tematico: </label>
+<select name = "quiz[indice]">
+<option value = "humanidades" selected>Humanidades</option>
+<option value = "ocio" selected>Ocio</option>
+<option value = "ciencia" selected>Ciencia</option>
+<option value = "tecnologia" selected>Tecnologia</option>
+<option value = "otro" <%="otro"===quiz.indice?"selected":""%> >Otro</option>
+<option value = "otro" selected>Otro</option>
+</select>    seleccion original ="<%= quiz.indice %>"<p>   
+<p><label for ="preg" class="rem"> Pregunta: </label>
 <input type="text" id ="preg" name="quiz[pregunta]" value="<%= quiz.pregunta %>"/> <p>
 <label for ="resp" class="rem"> Respuesta: </label>
 <input type="text" id ="resp" name="quiz[respuesta]" value="<%= quiz.respuesta %>"/> <p>
+     <p>Comentario:</p>
+     <%for(index in quiz.Comments) {%>
+        <p> <%=quiz.Comments[index].texto%></p>
+   <%}%>
 <a href="/quizes"><button type="button">Cancelar</button></a>
 <input type="submit" value="Salvar">
